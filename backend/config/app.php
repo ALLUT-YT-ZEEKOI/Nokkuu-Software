@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'version' => env('APP_VERSION', '1.16.84'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -97,7 +99,7 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-    'key' => env('APP_KEY', 'base64:99w81uP2p9hZ7/Q8V3B7+X1C2V3B4N5M6L7K8J9H0G1='),
+    'key' => env('APP_KEY') ?: 'base64:99w81uP2p9hZ7/Q8V3B7+X1C2V3B4N5M6L7K8J9H0G1=',
 
     'previous_keys' => [
         ...array_filter(

@@ -18,17 +18,19 @@ COPY entrypoint.sh /app/entrypoint.sh
 
 RUN composer install --no-dev --optimize-autoloader
 
-RUN cp .env.example .env || true
 RUN touch database/database.sqlite
 RUN chmod -R 777 storage bootstrap/cache database
 RUN chmod +x /app/entrypoint.sh
 
 ENV APP_ENV=production
-ENV APP_DEBUG=true
+ENV APP_DEBUG=false
 ENV APP_KEY=base64:99w81uP2p9hZ7/Q8V3B7+X1C2V3B4N5M6L7K8J9H0G1=
 ENV DB_CONNECTION=sqlite
 ENV DB_DATABASE=/app/database/database.sqlite
 ENV PORT=8000
+
+RUN cp .env.example .env \
+ && php -r "file_put_contents('.env', preg_replace('/^APP_KEY=.*/m', 'APP_KEY='.getenv('APP_KEY'), file_get_contents('.env')));"
 
 EXPOSE 8000
 

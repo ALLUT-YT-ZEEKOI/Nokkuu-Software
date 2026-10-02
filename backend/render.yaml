@@ -10,7 +10,7 @@ services:
       - key: APP_DEBUG
         value: "false"
       - key: APP_KEY
-        value: base64:m9P4a5Z9Y8nZ7/Q8V3B7+X1C2V3B4N5M6L7K8J9H0G1=
+        value: base64:99w81uP2p9hZ7/Q8V3B7+X1C2V3B4N5M6L7K8J9H0G1=
       - key: DB_CONNECTION
         value: sqlite
       - key: DB_DATABASE
