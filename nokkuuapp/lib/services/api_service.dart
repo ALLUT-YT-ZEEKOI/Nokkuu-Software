@@ -1,25 +1,10 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
-  // Set customLiveApiUrl to your hosted free backend URL (e.g. 'https://nokkuu-software.onrender.com/api')
-  static String? customLiveApiUrl = 'https://nokkuu-software.onrender.com/api';
-
-  static String get baseUrl {
-    if (customLiveApiUrl != null && customLiveApiUrl!.trim().isNotEmpty) {
-      final url = customLiveApiUrl!.trim();
-      return url.endsWith('/api') ? url : '$url/api';
-    }
-    if (kIsWeb) {
-      return 'http://localhost:8000/api';
-    } else if (defaultTargetPlatform == TargetPlatform.android) {
-      return 'http://10.0.2.2:8000/api';
-    } else {
-      return 'http://127.0.0.1:8000/api';
-    }
-  }
+  // Primary hosted live backend API URL
+  static const String baseUrl = 'https://nokkuu-software.onrender.com/api';
 
   static Future<String?> getToken() async {
     final prefs = await SharedPreferences.getInstance();
