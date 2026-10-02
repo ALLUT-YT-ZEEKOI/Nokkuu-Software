@@ -4,8 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
-  // Set customLiveApiUrl to your hosted free backend URL (e.g. 'https://nokkuu-api.onrender.com/api')
-  static String? customLiveApiUrl;
+  // Set customLiveApiUrl to your hosted free backend URL (e.g. 'https://nokkuu-software.onrender.com/api')
+  static String? customLiveApiUrl = 'https://nokkuu-software.onrender.com/api';
 
   static String get baseUrl {
     if (customLiveApiUrl != null && customLiveApiUrl!.trim().isNotEmpty) {
