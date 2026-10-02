@@ -1,3 +1,12 @@
+FROM node:22-alpine AS frontend
+
+WORKDIR /frontend
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm ci
+COPY frontend/ .
+ENV VITE_API_BASE_URL=/api
+RUN npm run build
+
 FROM php:8.2-cli
 
 RUN apt-get update && apt-get install -y \
@@ -14,6 +23,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 COPY backend/ .
+COPY --from=frontend /frontend/dist/ /app/public/
 COPY entrypoint.sh /app/entrypoint.sh
 
 RUN composer install --no-dev --optimize-autoloader
