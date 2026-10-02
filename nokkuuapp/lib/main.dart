@@ -38,10 +38,43 @@ class _NokkuuAppState extends State<NokkuuApp> {
 
   Future<void> _checkAuth() async {
     final token = await ApiService.getToken();
-    setState(() {
-      _isLoggedIn = token != null;
-      _isCheckingAuth = false;
-    });
+    if (token == null) {
+      if (mounted) {
+        setState(() {
+          _isLoggedIn = false;
+          _isCheckingAuth = false;
+        });
+      }
+      return;
+    }
+
+    try {
+      final res = await ApiService.getProfile();
+      final user = res['user'] ?? res;
+      if (user != null && (user['id'] != null || user['name'] != null)) {
+        if (mounted) {
+          setState(() {
+            _isLoggedIn = true;
+            _isCheckingAuth = false;
+          });
+        }
+      } else {
+        await ApiService.removeToken();
+        if (mounted) {
+          setState(() {
+            _isLoggedIn = false;
+            _isCheckingAuth = false;
+          });
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _isLoggedIn = true; // Fallback to offline mode
+          _isCheckingAuth = false;
+        });
+      }
+    }
   }
 
   @override
