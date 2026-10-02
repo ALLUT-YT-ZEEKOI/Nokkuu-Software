@@ -374,54 +374,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                             ),
                           ),
-
-                          const SizedBox(height: 16),
-                          Row(
-                            children: [
-                              Expanded(child: Divider(color: Colors.white.withValues(alpha: 0.12))),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 12),
-                                child: Text(
-                                  'INSTANT DEMO LOGIN',
-                                  style: TextStyle(color: Colors.white.withValues(alpha: 0.4), fontSize: 11, fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Expanded(child: Divider(color: Colors.white.withValues(alpha: 0.12))),
-                            ],
-                          ),
-                          const SizedBox(height: 16),
-
-                          // 1-Click Demo Profiles Chips Bar
-                          Row(
-                            children: [
-                              Expanded(
-                                child: _demoUserChip(
-                                  name: 'Ameen',
-                                  role: 'Pro',
-                                  avatarColor: AppTheme.primaryIndigo,
-                                  onTap: () => _handleAuth('ameen@gmail.com', 'ameen@gmail.com'),
-                                ),
-                              ),
-                              const SizedBox(width: 8),
-                              Expanded(
-                                child: _demoUserChip(
-                                  name: 'Rahul',
-                                  role: 'Dev',
-                                  avatarColor: AppTheme.accentPurple,
-                                  onTap: () => _handleAuth('rahul@uply.io', 'password123'),
-                                ),
-                              ),
-                              const SizedBox(width: 8),
-                              Expanded(
-                                child: _demoUserChip(
-                                  name: 'Sarah',
-                                  role: 'Lead',
-                                  avatarColor: AppTheme.accentPink,
-                                  onTap: () => _handleAuth('sarah@uply.io', 'password123'),
-                                ),
-                              ),
-                            ],
-                          ),
                         ],
                       ),
                     ),
@@ -463,47 +415,6 @@ class _LoginScreenState extends State<LoginScreen> {
             borderRadius: BorderRadius.circular(16),
             borderSide: BorderSide(color: AppTheme.primaryIndigo.withValues(alpha: 0.8), width: 1.5),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _demoUserChip({
-    required String name,
-    required String role,
-    required Color avatarColor,
-    required VoidCallback onTap,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(14),
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-        decoration: BoxDecoration(
-          color: const Color(0xFF0B1120),
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: avatarColor.withValues(alpha: 0.4), width: 1.2),
-        ),
-        child: Column(
-          children: [
-            CircleAvatar(
-              radius: 14,
-              backgroundColor: avatarColor.withValues(alpha: 0.25),
-              child: Text(
-                name[0],
-                style: TextStyle(color: avatarColor, fontWeight: FontWeight.bold, fontSize: 13),
-              ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              name,
-              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
-            ),
-            Text(
-              role,
-              style: TextStyle(color: Colors.white.withValues(alpha: 0.4), fontSize: 9, fontWeight: FontWeight.w600),
-            ),
-          ],
         ),
       ),
     );
