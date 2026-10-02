@@ -20,7 +20,7 @@ void main() {
 }
 
 class NokkuuApp extends StatefulWidget {
-  const NokkuuApp({Key? key}) : super(key: key);
+  const NokkuuApp({super.key});
 
   @override
   State<NokkuuApp> createState() => _NokkuuAppState();
@@ -51,20 +51,24 @@ class _NokkuuAppState extends State<NokkuuApp> {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
       home: _isCheckingAuth
-          ? const Scaffold(body: Center(child: CircularProgressIndicator(color: AppTheme.primaryIndigo)))
+          ? const Scaffold(
+              body: Center(child: CircularProgressIndicator(color: AppTheme.primaryIndigo)),
+            )
           : _isLoggedIn
-              ? MainNavigation(onLogout: () async {
-                  await ApiService.removeToken();
-                  setState(() => _isLoggedIn = false);
-                })
-              : LoginScreen(onLoginSuccess: () => setState(() => _isLoggedIn = true)),
+          ? MainNavigation(
+              onLogout: () async {
+                await ApiService.removeToken();
+                setState(() => _isLoggedIn = false);
+              },
+            )
+          : LoginScreen(onLoginSuccess: () => setState(() => _isLoggedIn = true)),
     );
   }
 }
 
 class MainNavigation extends StatefulWidget {
   final VoidCallback onLogout;
-  const MainNavigation({Key? key, required this.onLogout}) : super(key: key);
+  const MainNavigation({super.key, required this.onLogout});
 
   @override
   State<MainNavigation> createState() => _MainNavigationState();
@@ -104,7 +108,7 @@ class _MainNavigationState extends State<MainNavigation> {
                   IconButton(
                     icon: const Icon(Icons.close, color: Colors.white54),
                     onPressed: () => Navigator.pop(ctx),
-                  )
+                  ),
                 ],
               ),
               const SizedBox(height: 16),
@@ -127,7 +131,10 @@ class _MainNavigationState extends State<MainNavigation> {
               Divider(color: Colors.white.withOpacity(0.1)),
               ListTile(
                 leading: const Icon(Icons.logout, color: Colors.redAccent),
-                title: const Text('Logout', style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.bold)),
+                title: const Text(
+                  'Logout',
+                  style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.bold),
+                ),
                 onTap: () {
                   Navigator.pop(ctx);
                   widget.onLogout();
@@ -158,7 +165,10 @@ class _MainNavigationState extends State<MainNavigation> {
           children: [
             Icon(icon, color: color, size: 28),
             const SizedBox(height: 8),
-            Text(label, style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
+            Text(
+              label,
+              style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+            ),
           ],
         ),
       ),
@@ -171,18 +181,10 @@ class _MainNavigationState extends State<MainNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> pages = [
-      DashboardScreen(onNavigateTab: _onItemTapped),
-      const TasksAndNotesTab(),
-      const FinanceHubTab(),
-      const BuyingScreen(),
-    ];
+    final List<Widget> pages = [DashboardScreen(onNavigateTab: _onItemTapped), const TasksAndNotesTab(), const FinanceHubTab(), const BuyingScreen()];
 
     return Scaffold(
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: pages,
-      ),
+      body: IndexedStack(index: _selectedIndex, children: pages),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           border: Border(top: BorderSide(color: Colors.white10, width: 0.5)),
@@ -210,7 +212,7 @@ class _MainNavigationState extends State<MainNavigation> {
 }
 
 class TasksAndNotesTab extends StatelessWidget {
-  const TasksAndNotesTab({Key? key}) : super(key: key);
+  const TasksAndNotesTab({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -232,19 +234,14 @@ class TasksAndNotesTab extends StatelessWidget {
             ],
           ),
         ),
-        body: const TabBarView(
-          children: [
-            TasksScreen(),
-            TotePadScreen(),
-          ],
-        ),
+        body: const TabBarView(children: [TasksScreen(), TotePadScreen()]),
       ),
     );
   }
 }
 
 class FinanceHubTab extends StatelessWidget {
-  const FinanceHubTab({Key? key}) : super(key: key);
+  const FinanceHubTab({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -266,12 +263,7 @@ class FinanceHubTab extends StatelessWidget {
             ],
           ),
         ),
-        body: const TabBarView(
-          children: [
-            ExpensesScreen(),
-            CreditsScreen(),
-          ],
-        ),
+        body: const TabBarView(children: [ExpensesScreen(), CreditsScreen()]),
       ),
     );
   }

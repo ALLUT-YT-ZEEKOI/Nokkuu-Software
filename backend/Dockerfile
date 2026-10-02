@@ -20,6 +20,7 @@ RUN composer install --no-dev --optimize-autoloader
 RUN cp .env.example .env || true
 RUN touch database/database.sqlite
 RUN chmod -R 777 storage bootstrap/cache database
+RUN chmod +x entrypoint.sh
 
 ENV APP_ENV=production
 ENV APP_DEBUG=true
@@ -30,4 +31,4 @@ ENV PORT=8000
 
 EXPOSE 8000
 
-CMD php artisan key:generate --force && php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+ENTRYPOINT ["/app/entrypoint.sh"]
