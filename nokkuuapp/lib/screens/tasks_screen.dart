@@ -104,6 +104,9 @@ class _TasksScreenState extends State<TasksScreen> {
                       if (context.mounted) {
                         Navigator.pop(context);
                       }
+                      setState(() {
+                        _selectedCategory = 'all';
+                      });
                       _loadTasks();
                     }
                   },
@@ -179,23 +182,32 @@ class _TasksScreenState extends State<TasksScreen> {
 
           // Task List
           Expanded(
-            child: filteredTasks.isEmpty
-                ? Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.task_alt_rounded, size: 48, color: Colors.white24),
-                        const SizedBox(height: 12),
-                        Text(
-                          'No ${_selectedCategory == 'all' ? '' : _selectedCategory} tasks found',
-                          style: const TextStyle(color: Colors.white54, fontSize: 13),
+            child: RefreshIndicator(
+              onRefresh: _loadTasks,
+              color: AppTheme.primaryIndigo,
+              child: filteredTasks.isEmpty
+                  ? SingleChildScrollView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.5,
+                        alignment: Alignment.center,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(Icons.task_alt_rounded, size: 48, color: Colors.white24),
+                            const SizedBox(height: 12),
+                            Text(
+                              'No ${_selectedCategory == 'all' ? '' : _selectedCategory} tasks found',
+                              style: const TextStyle(color: Colors.white54, fontSize: 13),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  )
-                : ListView.builder(
-                    padding: const EdgeInsets.all(16),
-                    itemCount: filteredTasks.length,
+                      ),
+                    )
+                  : ListView.builder(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      padding: const EdgeInsets.all(16),
+                      itemCount: filteredTasks.length,
                     itemBuilder: (context, index) {
                       final t = filteredTasks[index];
                       final isCompleted = t['status'] == 'completed';
@@ -258,6 +270,7 @@ class _TasksScreenState extends State<TasksScreen> {
                       );
                     },
                   ),
+            ),
           ),
         ],
       ),
