@@ -149,6 +149,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: emeraldColor,
+                          foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                         ),
                         onPressed: () async {
@@ -162,7 +163,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
                           if (ctx.mounted) Navigator.pop(ctx);
                           _fetchExpenses();
                         },
-                        child: const Text('Save Expense', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        child: const Text('Save Expense', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
                       ),
                     ),
                   ],

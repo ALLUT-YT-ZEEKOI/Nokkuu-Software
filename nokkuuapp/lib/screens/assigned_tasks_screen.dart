@@ -166,10 +166,11 @@ class _AssignedTasksScreenState extends State<AssignedTasksScreen> with SingleTi
                             await ApiService.updateTaskStatus(task['id'], 'accepted');
                             _loadAssignedTasks();
                           },
-                          icon: const Icon(Icons.check_rounded, size: 16),
-                          label: const Text('Accept Task', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                          icon: const Icon(Icons.check_rounded, size: 16, color: Colors.white),
+                          label: const Text('Accept Task', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white)),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppTheme.accentEmerald,
+                            foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                           ),
                         ),
@@ -179,10 +180,11 @@ class _AssignedTasksScreenState extends State<AssignedTasksScreen> with SingleTi
                             await ApiService.updateTaskStatus(task['id'], 'completed');
                             _loadAssignedTasks();
                           },
-                          icon: const Icon(Icons.task_alt_rounded, size: 16),
-                          label: const Text('Mark Completed ✓', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                          icon: const Icon(Icons.task_alt_rounded, size: 16, color: Colors.white),
+                          label: const Text('Mark Completed ✓', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white)),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppTheme.primaryIndigo,
+                            foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                           ),
                         ),

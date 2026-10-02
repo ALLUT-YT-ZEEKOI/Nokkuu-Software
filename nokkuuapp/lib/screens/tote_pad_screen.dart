@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../services/api_service.dart';
+import '../theme/app_theme.dart';
 
 class TotePadScreen extends StatefulWidget {
   const TotePadScreen({Key? key}) : super(key: key);
@@ -144,7 +145,8 @@ class _TotePadScreenState extends State<TotePadScreen> {
                       height: 48,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.purpleAccent,
+                          backgroundColor: AppTheme.accentPurple,
+                          foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                         ),
                         onPressed: () async {
@@ -167,7 +169,7 @@ class _TotePadScreenState extends State<TotePadScreen> {
                         },
                         child: Text(
                           noteToEdit == null ? 'Save Note' : 'Update Note',
-                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
                         ),
                       ),
                     ),

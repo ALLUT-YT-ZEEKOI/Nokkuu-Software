@@ -96,10 +96,11 @@ class _FriendsScreenState extends State<FriendsScreen> {
                     }
                   }
                 },
-                icon: const Icon(Icons.send_rounded),
-                label: const Text('Send Assigned Task', style: TextStyle(fontWeight: FontWeight.bold)),
+                icon: const Icon(Icons.send_rounded, color: Colors.white),
+                label: const Text('Send Assigned Task', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppTheme.primaryIndigo,
+                  foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                 ),
@@ -161,10 +162,11 @@ class _FriendsScreenState extends State<FriendsScreen> {
                     ),
                     trailing: ElevatedButton.icon(
                       onPressed: () => _showAssignTaskDialog(friend),
-                      icon: const Icon(Icons.send_rounded, size: 14),
-                      label: const Text('Assign', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                      icon: const Icon(Icons.send_rounded, size: 14, color: Colors.white),
+                      label: const Text('Assign', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white)),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppTheme.primaryIndigo,
+                        foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                       ),
                     ),

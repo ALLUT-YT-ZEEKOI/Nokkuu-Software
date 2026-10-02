@@ -50,7 +50,7 @@ class _TasksScreenState extends State<TasksScreen> {
             bottom: MediaQuery.of(context).viewInsets.bottom + 24,
           ),
           decoration: const BoxDecoration(
-            color: Color(0xFF1E1B4B),
+            color: Color(0xFF0F172A),
             borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
           ),
           child: Column(
@@ -75,7 +75,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   hintText: 'e.g. Complete quarterly office report',
                   labelText: 'Task Title',
                   filled: true,
-                  fillColor: Colors.white.withValues(alpha: 0.05),
+                  fillColor: const Color(0xFF0B1120),
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
                 ),
               ),
@@ -107,10 +107,11 @@ class _TasksScreenState extends State<TasksScreen> {
                       _loadTasks();
                     }
                   },
-                  icon: const Icon(Icons.add_rounded),
-                  label: const Text('Add Task', style: TextStyle(fontWeight: FontWeight.bold)),
+                  icon: const Icon(Icons.add_rounded, color: Colors.white, size: 20),
+                  label: const Text('Add Task', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white)),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppTheme.primaryIndigo,
+                    foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                   ),
@@ -263,8 +264,9 @@ class _TasksScreenState extends State<TasksScreen> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _showCreateTaskDialog,
         backgroundColor: AppTheme.primaryIndigo,
-        icon: const Icon(Icons.add_rounded),
-        label: const Text('Add Task', style: TextStyle(fontWeight: FontWeight.bold)),
+        foregroundColor: Colors.white,
+        icon: const Icon(Icons.add_rounded, color: Colors.white),
+        label: const Text('Add Task', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
       ),
     );
   }

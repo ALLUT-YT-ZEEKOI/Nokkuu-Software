@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/api_service.dart';
+import '../theme/app_theme.dart';
 
 class BuyingScreen extends StatefulWidget {
   const BuyingScreen({Key? key}) : super(key: key);
@@ -184,7 +185,8 @@ class _BuyingScreenState extends State<BuyingScreen> {
                       height: 48,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.amber.shade700,
+                          backgroundColor: AppTheme.accentAmber,
+                          foregroundColor: Colors.black,
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                         ),
                         onPressed: () async {
@@ -201,7 +203,7 @@ class _BuyingScreenState extends State<BuyingScreen> {
                           if (ctx.mounted) Navigator.pop(ctx);
                           _fetchItems();
                         },
-                        child: const Text('Save Buying Ambition', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        child: const Text('Save Buying Ambition', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black)),
                       ),
                     ),
                   ],

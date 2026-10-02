@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/api_service.dart';
+import '../theme/app_theme.dart';
 
 class CreditsScreen extends StatefulWidget {
   const CreditsScreen({Key? key}) : super(key: key);
@@ -164,7 +165,8 @@ class _CreditsScreenState extends State<CreditsScreen> {
                       height: 48,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.teal,
+                          backgroundColor: AppTheme.accentEmerald,
+                          foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                         ),
                         onPressed: () async {
@@ -180,7 +182,7 @@ class _CreditsScreenState extends State<CreditsScreen> {
                           if (ctx.mounted) Navigator.pop(ctx);
                           _fetchCredits();
                         },
-                        child: const Text('Save Cash Credit', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        child: const Text('Save Cash Credit', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
                       ),
                     ),
                   ],
