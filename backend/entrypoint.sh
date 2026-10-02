@@ -18,7 +18,6 @@ if [ -n "$APP_KEY" ]; then
     mv .env.tmp .env
 fi
 
-php artisan migrate:fresh --force
-php artisan db:seed --force
+php artisan migrate --force
 
 exec php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
