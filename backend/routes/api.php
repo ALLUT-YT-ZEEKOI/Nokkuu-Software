@@ -18,7 +18,7 @@ use App\Http\Controllers\Api\BuyingItemController;
 
 // Public Auth Routes
 Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 // Protected API Routes (Sanctum)
 Route::middleware('auth:sanctum')->group(function () {
